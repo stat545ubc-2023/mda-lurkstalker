@@ -167,70 +167,139 @@ comments outside of the code chunk?
 
 ``` r
 ### EXPLORE HERE ###
-# steam_games
-# Provide the fundamental attributions for steam_games: a quick and concise overview of a dataset with number of rows, number of columns, column names, class type and the first 7 rows 
-
-glimpse(steam_games)
+# vancouver_trees
+# Overview of vancouver_trees Dataset:
+# Dimensions: The vancouver_trees dataset consists of 146,611 rows and 20 columns.
+# Data Types: The majority of the columns are of type character (chr) and numeric (dbl).
+# Sample Data: Display the first 7 rows of the dataset for a quick glance.
+glimpse(vancouver_trees)
 ```
 
-    ## Rows: 40,833
-    ## Columns: 21
-    ## $ id                       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
-    ## $ url                      <chr> "https://store.steampowered.com/app/379720/DO…
-    ## $ types                    <chr> "app", "app", "app", "app", "app", "bundle", …
-    ## $ name                     <chr> "DOOM", "PLAYERUNKNOWN'S BATTLEGROUNDS", "BAT…
-    ## $ desc_snippet             <chr> "Now includes all three premium DLC packs (Un…
-    ## $ recent_reviews           <chr> "Very Positive,(554),- 89% of the 554 user re…
-    ## $ all_reviews              <chr> "Very Positive,(42,550),- 92% of the 42,550 u…
-    ## $ release_date             <chr> "May 12, 2016", "Dec 21, 2017", "Apr 24, 2018…
-    ## $ developer                <chr> "id Software", "PUBG Corporation", "Harebrain…
-    ## $ publisher                <chr> "Bethesda Softworks,Bethesda Softworks", "PUB…
-    ## $ popular_tags             <chr> "FPS,Gore,Action,Demons,Shooter,First-Person,…
-    ## $ game_details             <chr> "Single-player,Multi-player,Co-op,Steam Achie…
-    ## $ languages                <chr> "English,French,Italian,German,Spanish - Spai…
-    ## $ achievements             <dbl> 54, 37, 128, NA, NA, NA, 51, 55, 34, 43, 72, …
-    ## $ genre                    <chr> "Action", "Action,Adventure,Massively Multipl…
-    ## $ game_description         <chr> "About This Game Developed by id software, th…
-    ## $ mature_content           <chr> NA, "Mature Content Description  The develope…
-    ## $ minimum_requirements     <chr> "Minimum:,OS:,Windows 7/8.1/10 (64-bit versio…
-    ## $ recommended_requirements <chr> "Recommended:,OS:,Windows 7/8.1/10 (64-bit ve…
-    ## $ original_price           <dbl> 19.99, 29.99, 39.99, 44.99, 0.00, NA, 59.99, …
-    ## $ discount_price           <dbl> 14.99, NA, NA, NA, NA, 35.18, 70.42, 17.58, N…
+    ## Rows: 146,611
+    ## Columns: 20
+    ## $ tree_id            <dbl> 149556, 149563, 149579, 149590, 149604, 149616, 149…
+    ## $ civic_number       <dbl> 494, 450, 4994, 858, 5032, 585, 4909, 4925, 4969, 7…
+    ## $ std_street         <chr> "W 58TH AV", "W 58TH AV", "WINDSOR ST", "E 39TH AV"…
+    ## $ genus_name         <chr> "ULMUS", "ZELKOVA", "STYRAX", "FRAXINUS", "ACER", "…
+    ## $ species_name       <chr> "AMERICANA", "SERRATA", "JAPONICA", "AMERICANA", "C…
+    ## $ cultivar_name      <chr> "BRANDON", NA, NA, "AUTUMN APPLAUSE", NA, "CHANTICL…
+    ## $ common_name        <chr> "BRANDON ELM", "JAPANESE ZELKOVA", "JAPANESE SNOWBE…
+    ## $ assigned           <chr> "N", "N", "N", "Y", "N", "N", "N", "N", "N", "N", "…
+    ## $ root_barrier       <chr> "N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "…
+    ## $ plant_area         <chr> "N", "N", "4", "4", "4", "B", "6", "6", "3", "3", "…
+    ## $ on_street_block    <dbl> 400, 400, 4900, 800, 5000, 500, 4900, 4900, 4900, 7…
+    ## $ on_street          <chr> "W 58TH AV", "W 58TH AV", "WINDSOR ST", "E 39TH AV"…
+    ## $ neighbourhood_name <chr> "MARPOLE", "MARPOLE", "KENSINGTON-CEDAR COTTAGE", "…
+    ## $ street_side_name   <chr> "EVEN", "EVEN", "EVEN", "EVEN", "EVEN", "ODD", "ODD…
+    ## $ height_range_id    <dbl> 2, 4, 3, 4, 2, 2, 3, 3, 2, 2, 2, 5, 3, 2, 2, 2, 2, …
+    ## $ diameter           <dbl> 10.00, 10.00, 4.00, 18.00, 9.00, 5.00, 15.00, 14.00…
+    ## $ curb               <chr> "N", "N", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "…
+    ## $ date_planted       <date> 1999-01-13, 1996-05-31, 1993-11-22, 1996-04-29, 19…
+    ## $ longitude          <dbl> -123.1161, -123.1147, -123.0846, -123.0870, -123.08…
+    ## $ latitude           <dbl> 49.21776, 49.21776, 49.23938, 49.23469, 49.23894, 4…
 
 ``` r
-class(steam_games)
+class(vancouver_trees)
 ```
 
-    ## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
+    ## [1] "tbl_df"     "tbl"        "data.frame"
 
 ``` r
-dim(steam_games)
+dim(vancouver_trees)
 ```
 
-    ## [1] 40833    21
+    ## [1] 146611     20
 
 ``` r
-head(steam_games, 7)
+map(vancouver_trees, class)
 ```
 
-    ## # A tibble: 7 × 21
-    ##      id url     types name  desc_snippet recent_reviews all_reviews release_date
-    ##   <dbl> <chr>   <chr> <chr> <chr>        <chr>          <chr>       <chr>       
-    ## 1     1 https:… app   DOOM  Now include… Very Positive… Very Posit… May 12, 2016
-    ## 2     2 https:… app   PLAY… PLAYERUNKNO… Mixed,(6,214)… Mixed,(836… Dec 21, 2017
-    ## 3     3 https:… app   BATT… Take comman… Mixed,(166),-… Mostly Pos… Apr 24, 2018
-    ## 4     4 https:… app   DayZ  The post-so… Mixed,(932),-… Mixed,(167… Dec 13, 2018
-    ## 5     5 https:… app   EVE … EVE Online … Mixed,(287),-… Mostly Pos… May 6, 2003 
-    ## 6     6 https:… bund… Gran… Grand Theft… NaN            NaN         NaN         
-    ## 7     7 https:… app   Devi… The ultimat… Very Positive… Very Posit… Mar 7, 2019 
-    ## # ℹ 13 more variables: developer <chr>, publisher <chr>, popular_tags <chr>,
-    ## #   game_details <chr>, languages <chr>, achievements <dbl>, genre <chr>,
-    ## #   game_description <chr>, mature_content <chr>, minimum_requirements <chr>,
-    ## #   recommended_requirements <chr>, original_price <dbl>, discount_price <dbl>
+    ## $tree_id
+    ## [1] "numeric"
+    ## 
+    ## $civic_number
+    ## [1] "numeric"
+    ## 
+    ## $std_street
+    ## [1] "character"
+    ## 
+    ## $genus_name
+    ## [1] "character"
+    ## 
+    ## $species_name
+    ## [1] "character"
+    ## 
+    ## $cultivar_name
+    ## [1] "character"
+    ## 
+    ## $common_name
+    ## [1] "character"
+    ## 
+    ## $assigned
+    ## [1] "character"
+    ## 
+    ## $root_barrier
+    ## [1] "character"
+    ## 
+    ## $plant_area
+    ## [1] "character"
+    ## 
+    ## $on_street_block
+    ## [1] "numeric"
+    ## 
+    ## $on_street
+    ## [1] "character"
+    ## 
+    ## $neighbourhood_name
+    ## [1] "character"
+    ## 
+    ## $street_side_name
+    ## [1] "character"
+    ## 
+    ## $height_range_id
+    ## [1] "numeric"
+    ## 
+    ## $diameter
+    ## [1] "numeric"
+    ## 
+    ## $curb
+    ## [1] "character"
+    ## 
+    ## $date_planted
+    ## [1] "Date"
+    ## 
+    ## $longitude
+    ## [1] "numeric"
+    ## 
+    ## $latitude
+    ## [1] "numeric"
+
+``` r
+head(vancouver_trees, 7)
+```
+
+    ## # A tibble: 7 × 20
+    ##   tree_id civic_number std_street    genus_name species_name cultivar_name  
+    ##     <dbl>        <dbl> <chr>         <chr>      <chr>        <chr>          
+    ## 1  149556          494 W 58TH AV     ULMUS      AMERICANA    BRANDON        
+    ## 2  149563          450 W 58TH AV     ZELKOVA    SERRATA      <NA>           
+    ## 3  149579         4994 WINDSOR ST    STYRAX     JAPONICA     <NA>           
+    ## 4  149590          858 E 39TH AV     FRAXINUS   AMERICANA    AUTUMN APPLAUSE
+    ## 5  149604         5032 WINDSOR ST    ACER       CAMPESTRE    <NA>           
+    ## 6  149616          585 W 61ST AV     PYRUS      CALLERYANA   CHANTICLEER    
+    ## 7  149617         4909 SHERBROOKE ST ACER       PLATANOIDES  COLUMNARE      
+    ## # ℹ 14 more variables: common_name <chr>, assigned <chr>, root_barrier <chr>,
+    ## #   plant_area <chr>, on_street_block <dbl>, on_street <chr>,
+    ## #   neighbourhood_name <chr>, street_side_name <chr>, height_range_id <dbl>,
+    ## #   diameter <dbl>, curb <chr>, date_planted <date>, longitude <dbl>,
+    ## #   latitude <dbl>
 
 ``` r
 # building_permits
-# Provide the fundamental attributions for building_permits: a quick and concise overview of a dataset with number of rows, number of columns, column names, class type and the first 7 rows 
+# Overview of building_permits Dataset:
+# Dimensions: The building_permits dataset consists of 20680 rows and 14 columns.
+# Data Types: The majority of the columns are of type character (chr) and numeric (dbl).
+# Sample Data: Display the first 7 rows of the dataset for a quick glance.
 glimpse(building_permits)
 ```
 
@@ -264,6 +333,52 @@ dim(building_permits)
     ## [1] 20680    14
 
 ``` r
+map(building_permits, class)
+```
+
+    ## $permit_number
+    ## [1] "character"
+    ## 
+    ## $issue_date
+    ## [1] "Date"
+    ## 
+    ## $project_value
+    ## [1] "numeric"
+    ## 
+    ## $type_of_work
+    ## [1] "character"
+    ## 
+    ## $address
+    ## [1] "character"
+    ## 
+    ## $project_description
+    ## [1] "character"
+    ## 
+    ## $building_contractor
+    ## [1] "character"
+    ## 
+    ## $building_contractor_address
+    ## [1] "character"
+    ## 
+    ## $applicant
+    ## [1] "character"
+    ## 
+    ## $applicant_address
+    ## [1] "character"
+    ## 
+    ## $property_use
+    ## [1] "character"
+    ## 
+    ## $specific_use_category
+    ## [1] "character"
+    ## 
+    ## $year
+    ## [1] "numeric"
+    ## 
+    ## $bi_id
+    ## [1] "numeric"
+
+``` r
 head(building_permits, 7)
 ```
 
@@ -283,8 +398,11 @@ head(building_permits, 7)
     ## #   year <dbl>, bi_id <dbl>
 
 ``` r
-# apt_buildings
-# Provide the fundamental attributions for cancer_sample: a quick and concise overview of a dataset with number of rows, number of columns, column names, class type and the first 7 rows 
+# cancer_sample
+# Overview of cancer_sample Dataset:
+# Dimensions: The cancer_sample dataset consists of 569 rows and 32 columns.
+# Data Types: The majority of the columns is of type numeric(dbl).
+# Sample Data: Display the first 7 rows of the dataset for a quick glance.
 glimpse(cancer_sample)
 ```
 
@@ -336,6 +454,106 @@ dim(cancer_sample)
     ## [1] 569  32
 
 ``` r
+map(cancer_sample, class)
+```
+
+    ## $ID
+    ## [1] "numeric"
+    ## 
+    ## $diagnosis
+    ## [1] "character"
+    ## 
+    ## $radius_mean
+    ## [1] "numeric"
+    ## 
+    ## $texture_mean
+    ## [1] "numeric"
+    ## 
+    ## $perimeter_mean
+    ## [1] "numeric"
+    ## 
+    ## $area_mean
+    ## [1] "numeric"
+    ## 
+    ## $smoothness_mean
+    ## [1] "numeric"
+    ## 
+    ## $compactness_mean
+    ## [1] "numeric"
+    ## 
+    ## $concavity_mean
+    ## [1] "numeric"
+    ## 
+    ## $concave_points_mean
+    ## [1] "numeric"
+    ## 
+    ## $symmetry_mean
+    ## [1] "numeric"
+    ## 
+    ## $fractal_dimension_mean
+    ## [1] "numeric"
+    ## 
+    ## $radius_se
+    ## [1] "numeric"
+    ## 
+    ## $texture_se
+    ## [1] "numeric"
+    ## 
+    ## $perimeter_se
+    ## [1] "numeric"
+    ## 
+    ## $area_se
+    ## [1] "numeric"
+    ## 
+    ## $smoothness_se
+    ## [1] "numeric"
+    ## 
+    ## $compactness_se
+    ## [1] "numeric"
+    ## 
+    ## $concavity_se
+    ## [1] "numeric"
+    ## 
+    ## $concave_points_se
+    ## [1] "numeric"
+    ## 
+    ## $symmetry_se
+    ## [1] "numeric"
+    ## 
+    ## $fractal_dimension_se
+    ## [1] "numeric"
+    ## 
+    ## $radius_worst
+    ## [1] "numeric"
+    ## 
+    ## $texture_worst
+    ## [1] "numeric"
+    ## 
+    ## $perimeter_worst
+    ## [1] "numeric"
+    ## 
+    ## $area_worst
+    ## [1] "numeric"
+    ## 
+    ## $smoothness_worst
+    ## [1] "numeric"
+    ## 
+    ## $compactness_worst
+    ## [1] "numeric"
+    ## 
+    ## $concavity_worst
+    ## [1] "numeric"
+    ## 
+    ## $concave_points_worst
+    ## [1] "numeric"
+    ## 
+    ## $symmetry_worst
+    ## [1] "numeric"
+    ## 
+    ## $fractal_dimension_worst
+    ## [1] "numeric"
+
+``` r
 head(cancer_sample, 7)
 ```
 
@@ -359,7 +577,10 @@ head(cancer_sample, 7)
 
 ``` r
 # parking_meters
-# Provide the fundamental attributions for parking_meters: a quick and concise overview of a dataset with number of rows, number of columns, column names, class type and the first 7 rows 
+# Overview of parking_meters Dataset:
+# Dimensions: The parking_meters dataset consists of 10032 rows and 32 columns.
+# Data Types: The majority of the columns are of type character (chr) and numeric (dbl).
+# Sample Data: Display the first 7 rows of the dataset for a quick glance.
 glimpse(parking_meters)
 ```
 
@@ -401,6 +622,76 @@ dim(parking_meters)
     ## [1] 10032    22
 
 ``` r
+map(parking_meters, class)
+```
+
+    ## $meter_head
+    ## [1] "character"
+    ## 
+    ## $r_mf_9a_6p
+    ## [1] "character"
+    ## 
+    ## $r_mf_6p_10
+    ## [1] "character"
+    ## 
+    ## $r_sa_9a_6p
+    ## [1] "character"
+    ## 
+    ## $r_sa_6p_10
+    ## [1] "character"
+    ## 
+    ## $r_su_9a_6p
+    ## [1] "character"
+    ## 
+    ## $r_su_6p_10
+    ## [1] "character"
+    ## 
+    ## $rate_misc
+    ## [1] "character"
+    ## 
+    ## $time_in_effect
+    ## [1] "character"
+    ## 
+    ## $t_mf_9a_6p
+    ## [1] "character"
+    ## 
+    ## $t_mf_6p_10
+    ## [1] "character"
+    ## 
+    ## $t_sa_9a_6p
+    ## [1] "character"
+    ## 
+    ## $t_sa_6p_10
+    ## [1] "character"
+    ## 
+    ## $t_su_9a_6p
+    ## [1] "character"
+    ## 
+    ## $t_su_6p_10
+    ## [1] "character"
+    ## 
+    ## $time_misc
+    ## [1] "character"
+    ## 
+    ## $credit_card
+    ## [1] "character"
+    ## 
+    ## $pay_phone
+    ## [1] "character"
+    ## 
+    ## $longitude
+    ## [1] "numeric"
+    ## 
+    ## $latitude
+    ## [1] "numeric"
+    ## 
+    ## $geo_local_area
+    ## [1] "character"
+    ## 
+    ## $meter_id
+    ## [1] "character"
+
+``` r
 head(parking_meters, 7)
 ```
 
@@ -427,10 +718,12 @@ to choose this one? Briefly explain your choice below.
 
 <!-------------------------- Start your work below ---------------------------->
 
-I have chosen the “steam_games” dataset. This dataset offers a detailed
-overview of steam games, encompassing reviews, descriptions, genres,
-specific game details, tags, achievements, and more. Utilizing this data
-will grant me a profound understanding of the steam game market.
+**I’ve selected the “vancouver_trees” dataset for my analysis. This
+comprehensive dataset provides intricate details, including tree types,
+coordinates, genus and species names, tree height, and more specific to
+Vancouver’s vegetation. By leveraging this dataset, I aim to gain an
+in-depth insight into the distribution and characteristics of trees in
+Vancouver.**
 
 <!----------------------------------------------------------------------------->
 
@@ -443,9 +736,9 @@ dataset. Note it down below.
 
 <!-------------------------- Start your work below ---------------------------->
 
-How does a game’s genre or tag correlate with its popularity, as
-measured by average review scores? Do users show a preference for
-specific game types or genres?
+**What are the geographical characteristics of the trees in Vancouver?
+Do the same species of trees have varying diameters in different regions
+of the city?**
 
 <!----------------------------------------------------------------------------->
 
@@ -512,6 +805,502 @@ to your data (in other words, why does it make sense to do that?), and
 sufficient comments for a reader to understand your reasoning and code.
 
 <!-------------------------- Start your work below ---------------------------->
+
+## 1. Plot the distribution of a numeric variable
+
+Reason for Selection: I chose to use a plot to illustrate the
+distribution of tree counts across various street blocks. This
+visualization aids in identifying which streets have the highest number
+of trees.
+
+``` r
+ggplot(vancouver_trees, aes(x = on_street_block)) +
+  geom_histogram(binwidth = 50 , fill = "blue", color="black") +
+  labs(title = "Count of trees on each street block ",
+       x = "Stree block code",
+       y = "Count") + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+![](mda-project-d1_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+## 2. Create a new variable based on other variables in your data (only if it makes sense)
+
+Reason for Selection: My objective is to ascertain the age of each tree,
+providing a clearer insight into its growth pattern. Understanding the
+correlation between the tree’s age and its diameter or height will be
+helpful for further analysis.
+
+``` r
+vancouver_trees <- vancouver_trees %>%
+  mutate(age = as.numeric(difftime(Sys.Date(), date_planted, unit = "weeks") / 52.25))
+vancouver_trees
+```
+
+    ## # A tibble: 146,611 × 21
+    ##    tree_id civic_number std_street    genus_name species_name cultivar_name  
+    ##      <dbl>        <dbl> <chr>         <chr>      <chr>        <chr>          
+    ##  1  149556          494 W 58TH AV     ULMUS      AMERICANA    BRANDON        
+    ##  2  149563          450 W 58TH AV     ZELKOVA    SERRATA      <NA>           
+    ##  3  149579         4994 WINDSOR ST    STYRAX     JAPONICA     <NA>           
+    ##  4  149590          858 E 39TH AV     FRAXINUS   AMERICANA    AUTUMN APPLAUSE
+    ##  5  149604         5032 WINDSOR ST    ACER       CAMPESTRE    <NA>           
+    ##  6  149616          585 W 61ST AV     PYRUS      CALLERYANA   CHANTICLEER    
+    ##  7  149617         4909 SHERBROOKE ST ACER       PLATANOIDES  COLUMNARE      
+    ##  8  149618         4925 SHERBROOKE ST ACER       PLATANOIDES  COLUMNARE      
+    ##  9  149619         4969 SHERBROOKE ST ACER       PLATANOIDES  COLUMNARE      
+    ## 10  149625          720 E 39TH AV     FRAXINUS   AMERICANA    AUTUMN APPLAUSE
+    ## # ℹ 146,601 more rows
+    ## # ℹ 15 more variables: common_name <chr>, assigned <chr>, root_barrier <chr>,
+    ## #   plant_area <chr>, on_street_block <dbl>, on_street <chr>,
+    ## #   neighbourhood_name <chr>, street_side_name <chr>, height_range_id <dbl>,
+    ## #   diameter <dbl>, curb <chr>, date_planted <date>, longitude <dbl>,
+    ## #   latitude <dbl>, age <dbl>
+
+## 4. Explore the relationship between 2 variables in a plot.
+
+Reason of selection: By visualizing the relationship between tree height
+and the planting date through a plot, we can gain insights into how tree
+height has evolved over time.
+
+``` r
+ggplot(vancouver_trees, aes(x = date_planted, y = height_range_id)) +
+  geom_point(colour = "blue" ,alpha = 0.25, na.rm = TRUE) + 
+  labs(title = "Tree Planting Dates VS Tree Height range", x = "Date planted in YYYY-MM-DD",
+       y = "Tree Height Range. Unit:10 feet") 
+```
+
+![](mda-project-d1_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+``` r
+  theme_minimal()
+```
+
+    ## List of 97
+    ##  $ line                      :List of 6
+    ##   ..$ colour       : chr "black"
+    ##   ..$ linewidth    : num 0.5
+    ##   ..$ linetype     : num 1
+    ##   ..$ lineend      : chr "butt"
+    ##   ..$ arrow        : logi FALSE
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_line" "element"
+    ##  $ rect                      :List of 5
+    ##   ..$ fill         : chr "white"
+    ##   ..$ colour       : chr "black"
+    ##   ..$ linewidth    : num 0.5
+    ##   ..$ linetype     : num 1
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_rect" "element"
+    ##  $ text                      :List of 11
+    ##   ..$ family       : chr ""
+    ##   ..$ face         : chr "plain"
+    ##   ..$ colour       : chr "black"
+    ##   ..$ size         : num 11
+    ##   ..$ hjust        : num 0.5
+    ##   ..$ vjust        : num 0.5
+    ##   ..$ angle        : num 0
+    ##   ..$ lineheight   : num 0.9
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : logi FALSE
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ title                     : NULL
+    ##  $ aspect.ratio              : NULL
+    ##  $ axis.title                : NULL
+    ##  $ axis.title.x              :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 2.75points 0points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.title.x.top          :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 0
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 2.75points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.title.x.bottom       : NULL
+    ##  $ axis.title.y              :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : num 90
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 2.75points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.title.y.left         : NULL
+    ##  $ axis.title.y.right        :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 0
+    ##   ..$ angle        : num -90
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 0points 2.75points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.text                 :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : chr "grey30"
+    ##   ..$ size         : 'rel' num 0.8
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.text.x               :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 2.2points 0points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.text.x.top           :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : num 0
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 2.2points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.text.x.bottom        : NULL
+    ##  $ axis.text.y               :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : num 1
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 2.2points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.text.y.left          : NULL
+    ##  $ axis.text.y.right         :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : num 0
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 0points 2.2points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ axis.ticks                : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ axis.ticks.x              : NULL
+    ##  $ axis.ticks.x.top          : NULL
+    ##  $ axis.ticks.x.bottom       : NULL
+    ##  $ axis.ticks.y              : NULL
+    ##  $ axis.ticks.y.left         : NULL
+    ##  $ axis.ticks.y.right        : NULL
+    ##  $ axis.ticks.length         : 'simpleUnit' num 2.75points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ axis.ticks.length.x       : NULL
+    ##  $ axis.ticks.length.x.top   : NULL
+    ##  $ axis.ticks.length.x.bottom: NULL
+    ##  $ axis.ticks.length.y       : NULL
+    ##  $ axis.ticks.length.y.left  : NULL
+    ##  $ axis.ticks.length.y.right : NULL
+    ##  $ axis.line                 : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ axis.line.x               : NULL
+    ##  $ axis.line.x.top           : NULL
+    ##  $ axis.line.x.bottom        : NULL
+    ##  $ axis.line.y               : NULL
+    ##  $ axis.line.y.left          : NULL
+    ##  $ axis.line.y.right         : NULL
+    ##  $ legend.background         : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ legend.margin             : 'margin' num [1:4] 5.5points 5.5points 5.5points 5.5points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ legend.spacing            : 'simpleUnit' num 11points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ legend.spacing.x          : NULL
+    ##  $ legend.spacing.y          : NULL
+    ##  $ legend.key                : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ legend.key.size           : 'simpleUnit' num 1.2lines
+    ##   ..- attr(*, "unit")= int 3
+    ##  $ legend.key.height         : NULL
+    ##  $ legend.key.width          : NULL
+    ##  $ legend.text               :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : 'rel' num 0.8
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ legend.text.align         : NULL
+    ##  $ legend.title              :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : num 0
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ legend.title.align        : NULL
+    ##  $ legend.position           : chr "right"
+    ##  $ legend.direction          : NULL
+    ##  $ legend.justification      : chr "center"
+    ##  $ legend.box                : NULL
+    ##  $ legend.box.just           : NULL
+    ##  $ legend.box.margin         : 'margin' num [1:4] 0cm 0cm 0cm 0cm
+    ##   ..- attr(*, "unit")= int 1
+    ##  $ legend.box.background     : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ legend.box.spacing        : 'simpleUnit' num 11points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ panel.background          : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ panel.border              : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ panel.spacing             : 'simpleUnit' num 5.5points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ panel.spacing.x           : NULL
+    ##  $ panel.spacing.y           : NULL
+    ##  $ panel.grid                :List of 6
+    ##   ..$ colour       : chr "grey92"
+    ##   ..$ linewidth    : NULL
+    ##   ..$ linetype     : NULL
+    ##   ..$ lineend      : NULL
+    ##   ..$ arrow        : logi FALSE
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_line" "element"
+    ##  $ panel.grid.major          : NULL
+    ##  $ panel.grid.minor          :List of 6
+    ##   ..$ colour       : NULL
+    ##   ..$ linewidth    : 'rel' num 0.5
+    ##   ..$ linetype     : NULL
+    ##   ..$ lineend      : NULL
+    ##   ..$ arrow        : logi FALSE
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_line" "element"
+    ##  $ panel.grid.major.x        : NULL
+    ##  $ panel.grid.major.y        : NULL
+    ##  $ panel.grid.minor.x        : NULL
+    ##  $ panel.grid.minor.y        : NULL
+    ##  $ panel.ontop               : logi FALSE
+    ##  $ plot.background           : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ plot.title                :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : 'rel' num 1.2
+    ##   ..$ hjust        : num 0
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 5.5points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ plot.title.position       : chr "panel"
+    ##  $ plot.subtitle             :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : num 0
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 0points 0points 5.5points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ plot.caption              :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : 'rel' num 0.8
+    ##   ..$ hjust        : num 1
+    ##   ..$ vjust        : num 1
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 5.5points 0points 0points 0points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ plot.caption.position     : chr "panel"
+    ##  $ plot.tag                  :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : 'rel' num 1.2
+    ##   ..$ hjust        : num 0.5
+    ##   ..$ vjust        : num 0.5
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ plot.tag.position         : chr "topleft"
+    ##  $ plot.margin               : 'margin' num [1:4] 5.5points 5.5points 5.5points 5.5points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ strip.background          : list()
+    ##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
+    ##  $ strip.background.x        : NULL
+    ##  $ strip.background.y        : NULL
+    ##  $ strip.clip                : chr "inherit"
+    ##  $ strip.placement           : chr "inside"
+    ##  $ strip.text                :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : chr "grey10"
+    ##   ..$ size         : 'rel' num 0.8
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : NULL
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : 'margin' num [1:4] 4.4points 4.4points 4.4points 4.4points
+    ##   .. ..- attr(*, "unit")= int 8
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ strip.text.x              : NULL
+    ##  $ strip.text.x.bottom       : NULL
+    ##  $ strip.text.x.top          : NULL
+    ##  $ strip.text.y              :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : num -90
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ strip.text.y.left         :List of 11
+    ##   ..$ family       : NULL
+    ##   ..$ face         : NULL
+    ##   ..$ colour       : NULL
+    ##   ..$ size         : NULL
+    ##   ..$ hjust        : NULL
+    ##   ..$ vjust        : NULL
+    ##   ..$ angle        : num 90
+    ##   ..$ lineheight   : NULL
+    ##   ..$ margin       : NULL
+    ##   ..$ debug        : NULL
+    ##   ..$ inherit.blank: logi TRUE
+    ##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
+    ##  $ strip.text.y.right        : NULL
+    ##  $ strip.switch.pad.grid     : 'simpleUnit' num 2.75points
+    ##   ..- attr(*, "unit")= int 8
+    ##  $ strip.switch.pad.wrap     : 'simpleUnit' num 2.75points
+    ##   ..- attr(*, "unit")= int 8
+    ##  - attr(*, "class")= chr [1:2] "theme" "gg"
+    ##  - attr(*, "complete")= logi TRUE
+    ##  - attr(*, "validate")= logi TRUE
+
+## 7. Make a new tibble with a subset of your data, with variables and observations that you are interested in exploring
+
+Reason for selection: I’ve created a new tibble with three columns:
+“**neighbourhood_name**”, “**species_name**”, and
+“**total_count_per_species**”. This will help me determine which tree
+species are most prevalent in various neighborhoods and streets in
+Vancouver.
+
+``` r
+vancouver_trees_subset <- vancouver_trees %>%
+  select(genus_name, species_name, common_name, on_street_block, neighbourhood_name)
+
+vancouver_trees_species_count_neighbourhood <- vancouver_trees_subset %>% 
+  group_by(neighbourhood_name, species_name) %>% 
+  mutate(total_count_per_species = n())
+
+vancouver_trees_species_count_neighbourhood
+```
+
+    ## # A tibble: 146,611 × 6
+    ## # Groups:   neighbourhood_name, species_name [3,056]
+    ##    genus_name species_name common_name        on_street_block neighbourhood_name
+    ##    <chr>      <chr>        <chr>                        <dbl> <chr>             
+    ##  1 ULMUS      AMERICANA    BRANDON ELM                    400 MARPOLE           
+    ##  2 ZELKOVA    SERRATA      JAPANESE ZELKOVA               400 MARPOLE           
+    ##  3 STYRAX     JAPONICA     JAPANESE SNOWBELL             4900 KENSINGTON-CEDAR …
+    ##  4 FRAXINUS   AMERICANA    AUTUMN APPLAUSE A…             800 KENSINGTON-CEDAR …
+    ##  5 ACER       CAMPESTRE    HEDGE MAPLE                   5000 KENSINGTON-CEDAR …
+    ##  6 PYRUS      CALLERYANA   CHANTICLEER PEAR               500 MARPOLE           
+    ##  7 ACER       PLATANOIDES  COLUMNAR NORWAY M…            4900 KENSINGTON-CEDAR …
+    ##  8 ACER       PLATANOIDES  COLUMNAR NORWAY M…            4900 KENSINGTON-CEDAR …
+    ##  9 ACER       PLATANOIDES  COLUMNAR NORWAY M…            4900 KENSINGTON-CEDAR …
+    ## 10 FRAXINUS   AMERICANA    AUTUMN APPLAUSE A…             700 KENSINGTON-CEDAR …
+    ## # ℹ 146,601 more rows
+    ## # ℹ 1 more variable: total_count_per_species <int>
+
 <!----------------------------------------------------------------------------->
 
 # Task 3: Choose research questions
@@ -523,6 +1312,25 @@ research question that interested you (Task 1.4). Now it’s time to pick
 Write the 4 questions and any additional comments below.
 
 <!--- *****START HERE***** --->
+
+1.  How are tree species distributed across various neighborhoods and
+    streets in Vancouver?
+    1.  Need to know how many kinds of tree species in each neighborhood
+        and street
+2.  Which tree species is predominant across different neighborhoods and
+    streets in Vancouver?
+    1.  Need to know the most common of tree species(in quantity) in
+        each neighborhood and street
+3.  Were there particular periods during which tree planting
+    significantly increased in Vancouver?
+    1.  If so, which tree species were predominantly planted during
+        these periods each year?
+4.  Is there a discernible correlation between the diameter or height of
+    trees and factors like the presence of a root barrier, street side,
+    curb or ages(date of plant)?
+    1.  Does the tree with a root barrier have a long diameter and
+        higher height in general?
+
 <!----------------------------->
 
 # Overall reproducibility/Cleanliness/Coherence Checklist

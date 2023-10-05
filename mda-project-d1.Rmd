@@ -101,33 +101,48 @@ And that is exactly the first thing that you will do!
 
 ```{r}
 ### EXPLORE HERE ###
-# steam_games
-# Provide the fundamental attributions for steam_games: a quick and concise overview of a dataset with number of rows, number of columns, column names, class type and the first 7 rows 
-
-glimpse(steam_games)
-class(steam_games)
-dim(steam_games)
-head(steam_games, 7)
+# vancouver_trees
+# Overview of vancouver_trees Dataset:
+# Dimensions: The vancouver_trees dataset consists of 146,611 rows and 20 columns.
+# Data Types: The majority of the columns are of type character (chr) and numeric (dbl).
+# Sample Data: Display the first 7 rows of the dataset for a quick glance.
+glimpse(vancouver_trees)
+class(vancouver_trees)
+dim(vancouver_trees)
+map(vancouver_trees, class)
+head(vancouver_trees, 7)
 
 # building_permits
-# Provide the fundamental attributions for building_permits: a quick and concise overview of a dataset with number of rows, number of columns, column names, class type and the first 7 rows 
+# Overview of building_permits Dataset:
+# Dimensions: The building_permits dataset consists of 20680 rows and 14 columns.
+# Data Types: The majority of the columns are of type character (chr) and numeric (dbl).
+# Sample Data: Display the first 7 rows of the dataset for a quick glance.
 glimpse(building_permits)
 class(building_permits)
 dim(building_permits)
+map(building_permits, class)
 head(building_permits, 7)
 
-# apt_buildings
-# Provide the fundamental attributions for cancer_sample: a quick and concise overview of a dataset with number of rows, number of columns, column names, class type and the first 7 rows 
+# cancer_sample
+# Overview of cancer_sample Dataset:
+# Dimensions: The cancer_sample dataset consists of 569 rows and 32 columns.
+# Data Types: The majority of the columns is of type numeric(dbl).
+# Sample Data: Display the first 7 rows of the dataset for a quick glance.
 glimpse(cancer_sample)
 class(cancer_sample)
 dim(cancer_sample)
+map(cancer_sample, class)
 head(cancer_sample, 7)
 
 # parking_meters
-# Provide the fundamental attributions for parking_meters: a quick and concise overview of a dataset with number of rows, number of columns, column names, class type and the first 7 rows 
+# Overview of parking_meters Dataset:
+# Dimensions: The parking_meters dataset consists of 10032 rows and 32 columns.
+# Data Types: The majority of the columns are of type character (chr) and numeric (dbl).
+# Sample Data: Display the first 7 rows of the dataset for a quick glance.
 glimpse(parking_meters)
 class(parking_meters)
 dim(parking_meters)
+map(parking_meters, class)
 head(parking_meters, 7)
 ```
 
@@ -137,7 +152,7 @@ head(parking_meters, 7)
 
 <!-------------------------- Start your work below ---------------------------->
 
-I have chosen the "steam_games" dataset. This dataset offers a detailed overview of steam games, encompassing reviews, descriptions, genres, specific game details, tags, achievements, and more. Utilizing this data will grant me a profound understanding of the steam game market.
+**I've selected the "vancouver_trees" dataset for my analysis. This comprehensive dataset provides intricate details, including tree types, coordinates, genus and species names, tree height, and more specific to Vancouver's vegetation. By leveraging this dataset, I aim to gain an in-depth insight into the distribution and characteristics of trees in Vancouver.**
 
 <!----------------------------------------------------------------------------->
 
@@ -145,7 +160,7 @@ I have chosen the "steam_games" dataset. This dataset offers a detailed overview
 
 <!-------------------------- Start your work below ---------------------------->
 
-How does a game's genre or tag correlate with its popularity, as measured by average review scores? Do users show a preference for specific game types or genres?
+**What are the geographical characteristics of the trees in Vancouver? Do the same species of trees have varying diameters in different regions of the city?**
 
 <!----------------------------------------------------------------------------->
 
@@ -176,6 +191,56 @@ Make sure that you're using dplyr and ggplot2 rather than base R for this task. 
 
 <!-------------------------- Start your work below ---------------------------->
 
+## 1. Plot the distribution of a numeric variable
+
+Reason for Selection: I chose to use a plot to illustrate the distribution of tree counts across various street blocks. This visualization aids in identifying which streets have the highest number of trees.
+
+```{r}
+ggplot(vancouver_trees, aes(x = on_street_block)) +
+  geom_histogram(binwidth = 50 , fill = "blue", color="black") +
+  labs(title = "Count of trees on each street block ",
+       x = "Stree block code",
+       y = "Count") + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## 2. Create a new variable based on other variables in your data (only if it makes sense)
+
+Reason for Selection: My objective is to ascertain the age of each tree, providing a clearer insight into its growth pattern. Understanding the correlation between the tree's age and its diameter or height will be helpful for further analysis.
+
+```{r}
+vancouver_trees <- vancouver_trees %>%
+  mutate(age = as.numeric(difftime(Sys.Date(), date_planted, unit = "weeks") / 52.25))
+vancouver_trees
+```
+
+## 4. Explore the relationship between 2 variables in a plot.
+
+Reason of selection: By visualizing the relationship between tree height and the planting date through a plot, we can gain insights into how tree height has evolved over time.
+
+```{r}
+ggplot(vancouver_trees, aes(x = date_planted, y = height_range_id)) +
+  geom_point(colour = "blue" ,alpha = 0.25, na.rm = TRUE) + 
+  labs(title = "Tree Planting Dates VS Tree Height range", x = "Date planted in YYYY-MM-DD",
+       y = "Tree Height Range. Unit:10 feet") 
+  theme_minimal()
+```
+
+## 7. Make a new tibble with a subset of your data, with variables and observations that you are interested in exploring
+
+Reason for selection: I've created a new tibble with three columns: "**neighbourhood_name**", "**species_name**", and "**total_count_per_species**". This will help me determine which tree species are most prevalent in various neighborhoods and streets in Vancouver.
+
+```{r}
+vancouver_trees_subset <- vancouver_trees %>%
+  select(genus_name, species_name, common_name, on_street_block, neighbourhood_name)
+
+vancouver_trees_species_count_neighbourhood <- vancouver_trees_subset %>% 
+  group_by(neighbourhood_name, species_name) %>% 
+  mutate(total_count_per_species = n())
+
+vancouver_trees_species_count_neighbourhood
+```
+
 <!----------------------------------------------------------------------------->
 
 # Task 3: Choose research questions
@@ -183,6 +248,15 @@ Make sure that you're using dplyr and ggplot2 rather than base R for this task. 
 **(4 points)** So far, you have chosen a dataset and gotten familiar with it through exploring the data. You have also brainstormed one research question that interested you (Task 1.4). Now it's time to pick 4 research questions that you would like to explore in Milestone 2! Write the 4 questions and any additional comments below.
 
 <!--- *****START HERE***** --->
+
+1.  How are tree species distributed across various neighborhoods and streets in Vancouver?
+    1.  Need to know how many kinds of tree species in each neighborhood and street
+2.  Which tree species is predominant across different neighborhoods and streets in Vancouver?
+    1.  Need to know the most common of tree species(in quantity) in each neighborhood and street
+3.  Were there particular periods during which tree planting significantly increased in Vancouver?
+    1.  If so, which tree species were predominantly planted during these periods each year?
+4.  Is there a discernible correlation between the diameter or height of trees and factors like the presence of a root barrier, street side, curb or ages(date of plant)?
+    1.  Does the tree with a root barrier have a long diameter and higher height in general?
 
 <!----------------------------->
 
